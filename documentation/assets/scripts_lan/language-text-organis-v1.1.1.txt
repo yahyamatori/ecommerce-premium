@@ -1,0 +1,7 @@
+===========Languages Text============
+Thousands Separator
+Decimal Separator
+Decimal Digit
+
+
+

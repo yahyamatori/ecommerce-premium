@@ -1,0 +1,46 @@
+
+DELETE FROM tp_options WHERE option_name = 'currency';
+
+INSERT INTO `tp_options` (`option_name`, `option_value`, `created_at`, `updated_at`) VALUES
+('currency', '{\"currency_name\":\"USD\",\"currency_icon\":\"$\",\"currency_position\":\"left\",\"thousands_separator\":\"comma\",\"decimal_separator\":\"point\",\"decimal_digit\":\"2\"}', '2021-08-21 10:22:13', '2022-12-08 23:59:15');
+
+ALTER TABLE `order_items` CHANGE `price` `price` DOUBLE(12,3) NULL DEFAULT NULL;
+ALTER TABLE `order_items` CHANGE `total_price` `total_price` DOUBLE(12,3) NULL DEFAULT NULL;
+ALTER TABLE `order_items` CHANGE `tax` `tax` DOUBLE(12,3) NULL DEFAULT NULL;
+ALTER TABLE `order_items` CHANGE `discount` `discount` DOUBLE(12,3) NULL DEFAULT NULL;
+
+ALTER TABLE `order_masters` CHANGE `total_price` `total_price` DOUBLE(12,3) NULL DEFAULT NULL;
+ALTER TABLE `order_masters` CHANGE `discount` `discount` DOUBLE(12,3) NULL DEFAULT NULL;
+ALTER TABLE `order_masters` CHANGE `tax` `tax` DOUBLE(12,3) NULL DEFAULT NULL;
+ALTER TABLE `order_masters` CHANGE `subtotal` `subtotal` DOUBLE(12,3) NULL DEFAULT NULL;
+ALTER TABLE `order_masters` CHANGE `total_amount` `total_amount` DOUBLE(12,3) NULL DEFAULT NULL;
+ALTER TABLE `order_masters` CHANGE `shipping_fee` `shipping_fee` DOUBLE(12,3) NULL DEFAULT NULL;
+
+ALTER TABLE `products` CHANGE `cost_price` `cost_price` DOUBLE(12,3) NULL DEFAULT NULL;
+ALTER TABLE `products` CHANGE `sale_price` `sale_price` DOUBLE(12,3) NULL DEFAULT NULL;
+ALTER TABLE `products` CHANGE `old_price` `old_price` DOUBLE(12,3) NULL DEFAULT NULL;
+
+ALTER TABLE `shipping` CHANGE `shipping_fee` `shipping_fee` DOUBLE(12,3) NOT NULL;
+ALTER TABLE `taxes` CHANGE `percentage` `percentage` DOUBLE(12,3) NOT NULL;
+
+ALTER TABLE `withdrawals` CHANGE `amount` `amount` DOUBLE(12,3) NULL DEFAULT NULL;
+ALTER TABLE `withdrawals` CHANGE `fee_amount` `fee_amount` DOUBLE(12,3) NULL DEFAULT NULL;
+
+===============English Language==============
+INSERT INTO `lankeyvalues` (`language_code`, `language_key`, `language_value`, `created_at`, `updated_at`) VALUES
+('en', 'Thousands Separator', 'Thousands Separator', '2022-12-08 23:33:10', '2022-12-08 23:33:10'),
+('en', 'Decimal Separator', 'Decimal Separator', '2022-12-08 23:40:39', '2022-12-08 23:40:39'),
+('en', 'Decimal Digit', 'Decimal Digit', '2022-12-08 23:49:48', '2022-12-08 23:49:48');
+
+===============Arabic Language==============
+INSERT INTO `lankeyvalues` (`language_code`, `language_key`, `language_value`, `created_at`, `updated_at`) VALUES
+('ar', 'Thousands Separator', 'Thousands Separator', '2022-12-08 23:33:18', '2022-12-08 23:33:18'),
+('ar', 'Decimal Separator', 'Decimal Separator', '2022-12-08 23:40:44', '2022-12-08 23:40:44'),
+('ar', 'Decimal Digit', 'Decimal Digit', '2022-12-08 23:50:00', '2022-12-08 23:50:00');
+
+===============French Language==============
+INSERT INTO `lankeyvalues` (`language_code`, `language_key`, `language_value`, `created_at`, `updated_at`) VALUES
+('fr', 'Thousands Separator', 'Thousands Separator', '2022-12-08 23:33:26', '2022-12-08 23:33:26'),
+('fr', 'Decimal Separator', 'Decimal Separator', '2022-12-08 23:40:50', '2022-12-08 23:40:50'),
+('fr', 'Decimal Digit', 'Decimal Digit', '2022-12-08 23:49:39', '2022-12-08 23:49:39');
+

@@ -1,0 +1,94 @@
+
+===============English Language==============
+INSERT INTO `lankeyvalues` (`language_code`, `language_key`, `language_value`, `created_at`, `updated_at`) VALUES
+('en', 'Cookie Consent', 'Cookie Consent', '2022-10-15 09:38:24', '2022-10-15 09:38:24'),
+('en', 'Message', 'Message', '2022-10-15 09:39:25', '2022-10-15 09:39:25'),
+('en', 'Learn More URL', 'Learn More URL', '2022-10-15 09:40:09', '2022-10-15 09:40:09'),
+('en', 'Learn More Text', 'Learn More Text', '2022-10-15 09:40:26', '2022-10-15 09:40:26'),
+('en', 'Blog', 'Blog', '2022-10-17 09:40:18', '2022-10-17 09:40:18'),
+('en', 'Read More', 'Read More', '2022-10-19 11:16:16', '2022-10-19 11:16:16'),
+('en', 'By', 'By', '2022-10-19 11:19:48', '2022-10-19 11:19:48'),
+('en', 'Blog Categories', 'Blog Categories', '2022-10-20 11:18:06', '2022-10-20 11:18:06');
+
+===============Arabic Language==============
+INSERT INTO `lankeyvalues` (`language_code`, `language_key`, `language_value`, `created_at`, `updated_at`) VALUES
+('ar', 'Cookie Consent', 'Cookie Consent', '2022-10-15 09:38:55', '2022-10-15 09:38:55'),
+('ar', 'Message', 'Message', '2022-10-15 09:39:30', '2022-10-15 09:39:30'),
+('ar', 'Learn More URL', 'Learn More URL', '2022-10-15 09:40:13', '2022-10-15 09:40:13'),
+('ar', 'Learn More Text', 'Learn More Text', '2022-10-15 09:40:38', '2022-10-15 09:40:38'),
+('ar', 'Blog', 'Blog', '2022-10-17 09:40:23', '2022-10-17 09:40:23'),
+('ar', 'Read More', 'Read More', '2022-10-19 11:16:35', '2022-10-19 11:16:35'),
+('ar', 'By', 'By', '2022-10-19 11:19:54', '2022-10-19 11:19:54'),
+('ar', 'Blog Categories', 'Blog Categories', '2022-10-20 11:18:11', '2022-10-20 11:18:11');
+
+===============French Language==============
+INSERT INTO `lankeyvalues` (`language_code`, `language_key`, `language_value`, `created_at`, `updated_at`) VALUES
+('fr', 'Cookie Consent', 'Cookie Consent', '2022-10-15 09:39:00', '2022-10-15 09:39:00'),
+('fr', 'Message', 'Message', '2022-10-15 09:39:18', '2022-10-15 09:39:18'),
+('fr', 'Learn More URL', 'Learn More URL', '2022-10-15 09:40:04', '2022-10-15 09:40:04'),
+('fr', 'Learn More Text', 'Learn More Text', '2022-10-15 09:40:32', '2022-10-15 09:40:32'),
+('fr', 'Blog', 'Blog', '2022-10-17 09:40:09', '2022-10-17 09:40:09'),
+('fr', 'Read More', 'Read More', '2022-10-19 11:16:40', '2022-10-19 11:16:40'),
+('fr', 'By', 'By', '2022-10-19 11:20:00', '2022-10-19 11:20:00'),
+('fr', 'Blog Categories', 'Blog Categories', '2022-10-20 11:18:16', '2022-10-20 11:18:16');
+
+=================tp_options==================
+INSERT INTO `tp_options` (`option_name`, `option_value`, `created_at`, `updated_at`) VALUES
+('cookie_consent', '{\"title\":\"Cookie Consent\",\"message\":\"This website uses cookies or similar technologies, to enhance your browsing experience and provide personalized recommendations. By continuing to use our website, you agree to our\",\"button_text\":\"Accept\",\"learn_more_url\":\"https:\\/\\/organis.themeposh.net\\/page\\/47\\/cookie-policy\",\"learn_more_text\":\"Privacy Policy\",\"style\":\"minimal\",\"position\":\"left\",\"is_publish\":\"1\"}', '2022-10-15 09:49:20', '2022-10-15 11:10:30');
+
+=================media_settings==================
+INSERT INTO `media_settings` (`media_type`, `media_desc`, `media_width`, `media_height`, `created_at`, `updated_at`) VALUES
+('Blog_Thumbnail', NULL, '800', '800', '2022-10-19 16:51:40', '2022-10-19 16:51:42');
+
+
+=================blog_categories==================
+CREATE TABLE `blog_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `is_publish` int(11) DEFAULT NULL,
+  `og_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `og_image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `og_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `og_keywords` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `blog_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `blog_categories_slug_unique` (`slug`);
+
+ALTER TABLE `blog_categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+=================blogs==================
+
+CREATE TABLE `blogs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `is_publish` int(11) DEFAULT NULL,
+  `og_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `og_image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `og_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `og_keywords` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `blogs_slug_unique` (`slug`);
+
+ALTER TABLE `blogs` MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  
